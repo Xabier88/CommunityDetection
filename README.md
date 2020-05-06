@@ -4,6 +4,16 @@ In this repository, we present two different algorithms that solve the Community
 
 # Algorithms
 
-1. Iterated Variable Neighborhood Search with a modified modularity computation. (IVNS)
+1. <b>Iterated Variable Neighborhood Search</b> with a modified modularity computation. (IVNS)
 
-2. Univariate Marginal Distribution algorithm that uses a locus-based-adjacency encoding to estimate the marginal probabilities. (UMDA)
+2. <b>Univariate Marginal Distribution</b> algorithm that uses a locus-based-adjacency encoding to estimate the marginal probabilities. (UMDA)
+
+# Tests
+
+- <b>Instance</b>: NIPS papers database (2014-2015). The task is to cluster the authors according to the papers that have published jointly with other authors.
+  
+- Conditions:
+
+  - <b>Maximum number of evaluations</b>: 2000 and 20.000.
+
+  - <b>Number of communities</b>: From 2 to 100.
