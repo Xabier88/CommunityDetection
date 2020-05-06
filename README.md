@@ -1,6 +1,6 @@
 # Community Detection
 
-In this repository, we present two different algorithms that solve the Community Detection Problem by maximizing the modularity. In addition, we include all the tests that have been performed to compare the quality of the algorithms. This repository and its content has been created by Xabier Benavides and Unai Lizarralde.
+In this repository, we present two different algorithms that solve the Community Detection Problem by maximizing the modularity. In addition, we include the parameter tuning and all the tests that have been performed to compare the quality of the algorithms. This repository and its content has been created by Xabier Benavides and Unai Lizarralde.
 
 ## Algorithms
 
@@ -10,7 +10,7 @@ In this repository, we present two different algorithms that solve the Community
 
 ## Parameter tuning
 
-- <b>Instance</b>: NIPS papers database (2014-2015). The task is to cluster the authors according to the papers that have published jointly with other authors.
+- <b>Instance</b>: NIPS papers database (2014-2015). The task consists in clustering the authors according to the papers that have published jointly with other authors.
   
 - <b>Conditions</b>:
 
@@ -30,44 +30,24 @@ The hyperparameter optimization has been performed using the hyperopt python pac
 
 The hyperparameter optimization has been performed using a grid search. The hyperparameters that have been optimized are the following:
 
--<b>Pop_size</b>: Population size. <i>Possible values: 50, 100, 200, 400</i>.
+- <b>Pop_size</b>: Population size. <i>Possible values: 50, 100, 200, 400</i>.
 
--<b>Sel_size</b>: Selection size. <i>Possible values: 10, 20, 40, 50</i>.
+- <b>Sel_size</b>: Selection size. <i>Possible values: 10, 20, 40, 50</i>.
 
 The remaining parameters have been set by hand:
 
--<b>Max_mutation</b>: Maximum mutation rate. <i>Value: 0,2</i>.
+- <b>Max_mutation</b>: Maximum mutation rate. <i>Value: 0,2</i>.
 
--<b>Min_mutation</b>: Minimum mutation rate. <i>Value: 0,02</i>.
+- <b>Min_mutation</b>: Minimum mutation rate. <i>Value: 0,02</i>.
 
--<b>Mutation_decrease</b>: Mutation rate decrease factor. <i>Value: 0,02</i>.
+- <b>Mutation_decrease</b>: Mutation rate decrease factor. <i>Value: 0,02</i>.
 
 ## Tests
 
-- <b>Instance</b>: NIPS papers database (2014-2015). The task is to cluster the authors according to the papers that have published jointly with other authors.
+- <b>Instance</b>: NIPS papers database (2014-2015). The task consists in clustering the authors according to the papers that have published jointly with other authors.
   
 - <b>Conditions</b>:
 
   - <b>Maximum number of evaluations</b>: 2000 and 20.000.
 
   - <b>Number of communities</b>: From 2 to 100.
-  
-- <b>Value of the hyperparameters</b>:
-  
-  - <b>IVNS</b>:
-  
-    - <i>Num_pert</i>: 1
-    
-    - <i>Exp_pert</i>: 1
-    
-  - <b>UMDA</b>:
-  
-    - <i>Pop_size</i>: 100
-    
-    - <i>Sel_size</i>: 10
-    
-    - <i>Max_mutation</i>: 0.2
-    
-    - <i>Min_mutation</i>: 0.02
-    
-    - <i>Mutation_decrease</i>: 0.02
