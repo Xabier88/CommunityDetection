@@ -1,4 +1,4 @@
-# CommunityDetection
+# Community Detection
 
 In this repository, we present two different algorithms that solve the Community Detection Problem by maximizing the modularity. In addition, we include all the tests that have been performed to compare the quality of the algorithms. This repository and its content has been created by Xabier Benavides and Unai Lizarralde.
 
@@ -21,5 +21,19 @@ In this repository, we present two different algorithms that solve the Community
 - <b>Value of the hyperparameters</b>:
   
   - <b>IVNS</b>:
+  
     - <i>Num_pert</i>: 1
+    
     - <i>Exp_pert</i>: 1
+    
+  - <b>UMDA</b>:
+  
+    -<i>Pop_size</i>: 100
+    
+    -<i>Sel_size</i>: 10
+    
+    -<i>Max_mutation</i>: 0.2
+    
+    -<i>Min_mutation</i>: 0.02
+    
+    -<i>Mutation_decrease</i>: 0.02
