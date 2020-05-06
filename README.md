@@ -28,12 +28,12 @@ In this repository, we present two different algorithms that solve the Community
     
   - <b>UMDA</b>:
   
-    -<i>Pop_size</i>: 100
+    - <i>Pop_size</i>: 100
     
-    -<i>Sel_size</i>: 10
+    - <i>Sel_size</i>: 10
     
-    -<i>Max_mutation</i>: 0.2
+    - <i>Max_mutation</i>: 0.2
     
-    -<i>Min_mutation</i>: 0.02
+    - <i>Min_mutation</i>: 0.02
     
-    -<i>Mutation_decrease</i>: 0.02
+    - <i>Mutation_decrease</i>: 0.02
