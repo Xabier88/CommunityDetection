@@ -12,8 +12,14 @@ In this repository, we present two different algorithms that solve the Community
 
 - <b>Instance</b>: NIPS papers database (2014-2015). The task is to cluster the authors according to the papers that have published jointly with other authors.
   
-- Conditions:
+- <b>Conditions</b>:
 
   - <b>Maximum number of evaluations</b>: 2000 and 20.000.
 
   - <b>Number of communities</b>: From 2 to 100.
+  
+- <b>Value of the hyperparameters</b>:
+  
+  - <b>IVNS</b>:
+    - <i>Num_pert</i>: 1
+    - <i>Exp_pert</i>: 1
