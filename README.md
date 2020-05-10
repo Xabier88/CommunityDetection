@@ -54,7 +54,7 @@ The remaining parameters have been set by hand:
 
 ### IVNS
 
-|     |  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Evals | &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Coms | &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Fitness_mean | &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Fitness_std | &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Time_mean |
+|     | Evaluations | Communities | Fitness_mean | Fitness_std | Time_mean |
 |----:|------------:|-----------:|------------------:|--------------:|---------------:|
 |   0 |        2000 |          2 |          0.457497 |    0.0045955  |        4.85978 |
 |   1 |        2000 |          3 |          0.545304 |    0.0142655  |        4.47982 |
