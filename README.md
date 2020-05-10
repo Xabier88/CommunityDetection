@@ -28,6 +28,8 @@ The hyperparameter optimization has been performed using the hyperopt python pac
 
 - <b>Exp_pert</b>: Exponent that is applied to the size of the communities when computing the probability of dismantling each of them in the shake procedure. <i>Possible values: Real numbers from 0 to 10</i>.
 
+Best configuration is <ins>**marked**</ins>.
+
 ### UMDA
 
 The hyperparameter optimization has been performed using a grid search. The hyperparameters that have been optimized are the following:
@@ -44,6 +46,7 @@ The remaining parameters have been set by hand:
 
 - <b>Mutation_decrease</b>: Mutation rate decrease factor. <i>Value: 0,02</i>.
 
+Best configuration is <ins>**marked**</ins>.
 
 |    |   Pop_size |   Sel_size |   Fitness_average |   Fitness_std |
 |---:|-----------:|-----------:|------------------:|--------------:|
