@@ -17,6 +17,8 @@ In this repository, we present two different algorithms that solve the Community
   - <b>Maximum number of evaluations</b>: 20.000.
 
   - <b>Number of communities</b>: 20.
+  
+- <b>10 attempts</b> per configuration.
 
 ### IVNS
 
@@ -51,6 +53,8 @@ The remaining parameters have been set by hand:
   - <b>Maximum number of evaluations</b>: 2000 and 20.000.
 
   - <b>Number of communities</b>: From 2 to 100.
+  
+- <b>10 attempts</b> per case.
 
 ### IVNS
 
