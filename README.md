@@ -4,7 +4,9 @@ In this repository, we present two different algorithms that solve the *Communit
 
 This repository and its content has been created by **Xabier Benavides** and **Unai Lizarralde**.
 
-<b style="color:red">WARNING: In order to run the *CDP_3_fasea.ipynb* notebook, it's necessary to download the following dataset.</b>
+```diff
+- **WARNING: In order to run the *CDP_3_fasea.ipynb* notebook, it's necessary to download the following dataset.**
+```
 
 ## Algorithms
 
