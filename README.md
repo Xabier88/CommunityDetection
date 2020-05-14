@@ -1,6 +1,8 @@
 # Community Detection
 
-In this repository, we present two different algorithms that solve the Community Detection Problem by maximizing the modularity. In addition, we include the parameter tuning and all the tests that have been performed to compare the quality of the algorithms (Summary of the obtained results below). This repository and its content has been created by Xabier Benavides and Unai Lizarralde.
+In this repository, we present two different algorithms that solve the *Community Detection Problem* by maximizing the modularity. In addition, we include the parameter tuning and all the tests that have been performed to compare the quality of the algorithms (Summary of the obtained results below). 
+
+This repository and its content has been created by **Xabier Benavides** and **Unai Lizarralde**.
 
 ## Algorithms
 
