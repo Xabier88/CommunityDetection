@@ -1,7 +1,6 @@
-<div style="text-align: justify">
 # Community Detection
 
-In this repository, we present two different algorithms that solve the *Community Detection Problem* by maximizing the modularity. In addition, we include the parameter tuning and all the tests that have been performed to compare the quality of the proposed algorithms (Summary of the obtained results below).
+In this repository, we present two different algorithms that solve the *Community Detection Problem* (CDP) by maximizing the modularity. In addition, we include the parameter tuning and all the tests that have been performed to compare the quality of the proposed algorithms (Summary of the obtained results below).
 
 This repository and its content has been created by **Xabier Benavides** and **Unai Lizarralde**.
 
@@ -793,4 +792,3 @@ Best configuration is <ins>**marked**</ins>.
 | 195 |       20000 |         98 |          0.961103 |   0.00148493  |       415.254  |
 | 196 |       20000 |         99 |          0.961621 |   0.00154145  |       407.053  |
 | 197 |       20000 |        100 |          0.961759 |   0.00155249  |       422.326  |
-</div>
