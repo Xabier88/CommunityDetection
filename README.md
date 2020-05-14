@@ -2,18 +2,6 @@
 
 In this repository, we present two different algorithms that solve the Community Detection Problem by maximizing the modularity. In addition, we include the parameter tuning and all the tests that have been performed to compare the quality of the algorithms (Summary of the obtained results below). This repository and its content has been created by Xabier Benavides and Unai Lizarralde.
 
-# Contents
-
-The project is composed of the following **files**/*directories*:
-
-- *bayesian_analysis*: Code of the bayesian analysis. Includes a Simplex plot with the results of the analysis.
-  
-- *csv*: All the results obtained during the parameter tuning and tests stored in csv format.
-  
-- **CDP_3_fasea.ipynb**: Jupyter Notebook in which the parameter tuning and the tests are performed. Includes graphical representations of the obtained results.
-  
-- **algorithms.py**: Code of the implemented community detection algorithms.
-
 ## Algorithms
 
 1. <b>Iterated Variable Neighborhood Search</b> with a modified modularity computation. (IVNS)
