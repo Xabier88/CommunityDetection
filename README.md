@@ -5,23 +5,41 @@ In this repository, we present two different algorithms that solve the Community
 # Directory tree
 
 ├── CDP
+
 │   ├── bayesian_analysis
+
 │   │   ├── bayesian.R
+
 │   │   ├── bayesian_analysis.R
+
 │   │   └── Simplex.svg
+
 │   ├── csv
+
 │   │   ├── one_alg_test.csv
+
 │   │   ├── pop_alg_test.csv
+
 │   │   ├── rand_alg_test.csv
+
 │   │   ├── one_alg_test_statistics.csv
+
 │   │   ├── pop_alg_test_statistics.csv
+
 │   │   ├── rand_alg_test_statistics.csv
+
 │   │   ├── one_alg_tuning.csv
+
 │   │   ├── pop_alg_tuning.csv
+
 │   │   ├── one_alg_tuning_statistics.csv
+
 │   │   └── pop_alg_tuning_statistics.csv
+
 │   ├── CDP_3_fasea.ipynb
+
 │   └── algorithms.py
+
 └── README.md
 
 ## Algorithms
