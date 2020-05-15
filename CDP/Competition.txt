@@ -1,0 +1,39 @@
+Average fitness and running time for 10 attempts (20 communities). Tests performed in Google Collab.
+
+- Population Based Algorithm
+
+	- 10.000 evaluations:
+	         - Fitness: 0.9162145983186815
+	         - Time: 143.27s
+
+	- 1.000 evaluations:
+	         - Fitness: 0.7928346705399624 
+	         - Time: 14.85s
+
+	- 20.000 evaluations:
+	         - Fitness: 0.9209362259416667 
+	         - Time: 289.69s
+
+	- 2.000 evaluations:
+	         - Fitness: 0.8534748054478213
+	         - Time: 29.35s
+
+- One Solution Algorithm
+
+	- 10.000 evaluations:
+	        - Fitness: 0.8563992725775055 
+	        - Time: 6.49s
+	
+	- 1.000 evaluations:
+	        - Fitness: 0.24465204312962374
+	        - Time: 2.83s
+
+	- 20.000 evaluations:
+	        - Fitness: 0.8572435525255664 
+	        - Time: 14.02s
+
+	- 2.000 evaluations:
+	        - Fitness: 0.5009351258466144
+	        - Time: 2.82s
+
+WARNING: There may be differences in the running time between these results and the ones in the "csv" folder. This happens because those tests weren't performed in Google Collab.
