@@ -29,7 +29,7 @@ import collections as co
 
 #Function that builds the networkx graph.
 def sortu_grafoa():
-    
+
     # Read data
     connect = sqlite3.connect('./dataset/database.sqlite')
     query = """
@@ -39,13 +39,13 @@ def sortu_grafoa():
     WHERE p.Year BETWEEN '2014' AND '2015'
     """
     df = pd.read_sql(query, connect)
-    
+
     # Initialize graph
     G = nx.Graph()
 
     # Transform
     # We use the name of the author instead of the id.
-    for p, a in df.groupby('paper_id')['name']: 
+    for p, a in df.groupby('paper_id')['name']:
         for u, v in itertools.combinations(a, 2):
             # We ignore the self-connections.
             if u != v:
@@ -81,9 +81,9 @@ def modularity(partition, graph, links, degree, weight='weight'):
 
 ######## RANDOM SEARCH ALGORITHM ########
 class Random_Search_Algorithm:
-    
+
     ################ Random search procedure ################
-    
+
     def random_search(self):
         start = tm.time()
         dict_degrees = dict(zip(self.G.nodes,self.node_degrees))
@@ -103,9 +103,9 @@ class Random_Search_Algorithm:
                 best_act = act
         end = tm.time()
         return best_sol,best_act,evals,end-start
-    
+
     ################ Initialize the global atributtes ################
-    
+
     def __init__(self,communities,max_evals):
         #Graph
         self.G = sortu_grafoa()
@@ -141,7 +141,7 @@ class One_Solution_Algorithm:
                 edge = self.G.get_edge_data(self.names[node1],self.names[node2],default={"weight":0})["weight"]
                 f1[sol[node1]][sol[node2]] += edge
                 f2[node1][sol[node2]] += edge
-        return f1,f2  
+        return f1,f2
 
     ################ Compute modularity improvement ################
 
@@ -155,7 +155,7 @@ class One_Solution_Algorithm:
     def improve_cj(self,deg,f1,C,D):
         f_V = self.weight*2
         return ((2*f1[C][D])/f_V-(2*deg[C]*deg[D])/f_V**2)
-      
+
     ################ Update structures ################
 
     ### Update structures after local moving modification
@@ -286,17 +286,17 @@ class One_Solution_Algorithm:
     ################ Perturb solutions ################
 
     def prob(self,size_com):
-        probability = [val**self.probability_exponent for val in size_com]
+        probability = [val**self.exp_pert for val in size_com]
         total = sum(probability)
         return [val/total for val in probability]
-        
+
     def perturbation(self,sol):
         #We consider all the non-empty communities
         used_coms = list(set(sol))
         #We compute the probability of selecting each non-empty community
         probability = self.prob([sol.count(com) for com in used_coms])
         #We compute the number of communities that have to be perturbed
-        size = min(self.num_perturbation,len(used_coms))
+        size = min(self.num_pert,len(used_coms))
         #We select "size" non-empty communities
         perturbed_coms = list(np.random.choice(used_coms, p=probability, size=size, replace=False))
         #We assign each node in the selected communities to a random community
@@ -331,8 +331,8 @@ class One_Solution_Algorithm:
         return best_sol,best_act,evals,end-start
 
     ################ Initialize the global atributtes ################
-    
-    def __init__(self,communities,max_evals,num_perturbation,probability_exponent):
+
+    def __init__(self,communities,max_evals,num_pert,exp_pert):
         #Graph
         self.G = sortu_grafoa()
         #Names of the nodes
@@ -347,18 +347,18 @@ class One_Solution_Algorithm:
         self.communities = communities
         #Allowed number of evaluations. Precondition: Max_evals > 0
         self.max_evals = max_evals
-        #Number of communities that are perturbed in each iteration of the IVNS. 
-        #Precondition: 0 < Num_pertubation <= Communities
-        self.num_perturbation = num_perturbation
+        #Number of communities that are perturbed in each iteration of the IVNS.
+        #Precondition: 0 < Num_pert <= Communities
+        self.num_pert = num_pert
         #Exponent applied to the size of each community when computing the probabilities of being pertubed.
-        #Precondition: Probability_exponent >= 0
-        self.probability_exponent = probability_exponent
+        #Precondition: Exp_pert >= 0
+        self.exp_pert = exp_pert
 
 ######## POPULATION BASED ALGORITHM ########
 class Population_Based_Algorithm:
 
     ################ Random initialization of initial population ################
-    
+
     def initialize(self):
         #Check if we will exceed the maximum number of evaluations and adjust the population size if true.
         if self.pop_size > self.max_evals:
@@ -368,10 +368,10 @@ class Population_Based_Algorithm:
         #Each gene can only be associated to its label or the label of one of its neighbors
         indexes = [np.random.choice(a=[i]+self.neighbors[i], size=pop_size, replace=True) for i in range(len(self.G))]
         pop = [[indexes[node][individual] for node in range(len(self.G))] for individual in range(pop_size)]
-        return pop                 
+        return pop
 
     ################ Create individuals based in the given probability distribution ################
-    
+
     def create_individuals(self,distribution,remaining_evals):
         #Check if we will exceed the maximum number of evaluations and adjust the population size if true.
         if self.pop_size > remaining_evals:
@@ -381,10 +381,10 @@ class Population_Based_Algorithm:
         #Each gene can only be associated to its label or the label of one of its neighbors
         indexes = [np.random.choice(a=[j for j in [i]+self.neighbors[i]],p=distribution[i],size=pop_size,replace=True) for i in range(len(self.G))]
         individuals = [[indexes[node][individual] for node in range(len(self.G))] for individual in range(pop_size)]
-        return individuals  
+        return individuals
 
     ################ Translate individuals from locus-based adjacency representation ################
-    
+
     ### Construct the community graphs that represent the individuals and translate them
     def translate(self,individuals):
         translation = []
@@ -427,25 +427,25 @@ class Population_Based_Algorithm:
         return individual
 
     ################ Evaluate the translated solutions using modularity ################
-    
+
     def evaluate(self,individuals,dict_degrees,evals):
         return [modularity(dict(zip(self.G.nodes, individuals[i])),self.G,self.weight,dict_degrees) for i in range(len(individuals))],evals+len(individuals)
-    
+
     ################ Select the "sel_size" best individuals in the population (Truncation) ################
-    
+
     def select(self,values):
         ordered = list(reversed([index for _,index in sorted(zip(values, [i for i in range(len(values))]))]))
         return ordered[:self.sel_size]
 
     ################ Create new population (Elitism) ################
-    
+
     def new_population(self,values,individuals):
         #We remove the worst solution
         worst = values.index(min(values))
         return individuals[:worst]+individuals[worst+1:],values[:worst]+values[worst+1:]
 
     ################ Mutate the individuals in the population with a certain mutation rate ################
-    
+
     def mutate(self,individuals,rate):
         #Each node in an individual has a certain probability of being modified
         for individual in individuals:
@@ -454,17 +454,17 @@ class Population_Based_Algorithm:
                 if rm.random() < rate:
                     individual[node] = np.random.choice(self.neighbors[node])
         #We compute the new mutation rate
-        new_rate = rate-self.mutation_decrease
+        new_rate = rate-self.mut_decrease
         #If new mutation rate above/equal minimum, we accept the new rate
-        if new_rate >= self.min_mutation_rate:
+        if new_rate >= self.min_mut:
             rate = new_rate
         #Else, we set the new rate to the minimum allowed rate
         else:
-            rate = self.min_mutation_rate 
+            rate = self.min_mut
         return individuals, rate
 
     ################ Estimate the univariate marginal probability distribution of each gene ################
-    
+
     def distribution_estimation(self,population,selected):
         #We only consider the label of the corresponding node and the label of its neighbors
         distribution = [[0 for i in range(len(self.neighbors[j])+1)] for j in range(len(self.G))]
@@ -480,7 +480,7 @@ class Population_Based_Algorithm:
         return distribution
 
     ################ Estimation of distribution algorithm ################
-    
+
     def EDA(self):
         start = tm.time()
         dict_degrees = dict(zip(self.G.nodes,self.node_degrees))
@@ -491,7 +491,7 @@ class Population_Based_Algorithm:
         best_act = max(values)
         best_sol = population[values.index(best_act)]
         #Initialize mutation rate.
-        mutation_rate = self.max_mutation_rate
+        mutation_rate = self.max_mut
         #Until there is no improvement after 5 attempts
         while evals < self.max_evals:
             #Elitism selection.
@@ -514,10 +514,10 @@ class Population_Based_Algorithm:
         #Translate the solution to the usual representation before returning
         end = tm.time()
         return self.translate([best_sol])[0], best_act, evals, end-start
-      
+
     ################ Initialize the global atributtes ################
-    
-    def __init__(self,communities,max_evals,pop_size,sel_size,max_mutation_rate,min_mutation_rate,mutation_decrease):
+
+    def __init__(self,communities,max_evals,pop_size,sel_size,max_mut,min_mut,mut_decrease):
         #Graph
         self.G = sortu_grafoa()
         #Names of the nodes
@@ -527,7 +527,7 @@ class Population_Based_Algorithm:
         #Node degrees
         self.node_degrees = [self.G.degree(node,weight="weight") for node in self.G]
         #Neighbors of each node
-        self.neighbors = [[k for k in range(len(self.G)) if self.G.get_edge_data(self.names[j],self.names[k],default={"weight":0})["weight"]>0] for j in range(len(self.G))] 
+        self.neighbors = [[k for k in range(len(self.G)) if self.G.get_edge_data(self.names[j],self.names[k],default={"weight":0})["weight"]>0] for j in range(len(self.G))]
         #Maximum number of communities. Precondition: Communities > 0
         self.communities = communities
         #Allowed number of evaluations. Precondition: Max_evals > 0
@@ -536,9 +536,9 @@ class Population_Based_Algorithm:
         self.pop_size = pop_size
         #Size of the selected individuals in each iteration. Precondition: 0 < Sel_size <= Pop_size
         self.sel_size = sel_size
-        #Maximum mutation rate. Precondition: Maximum_mutation_rate > 0
-        self.max_mutation_rate = max_mutation_rate
-        #Minimum mutation rate. Precondition: 0 < Minimum_mutation_rate <= Maximum_mutation_rate
-        self.min_mutation_rate = min_mutation_rate
+        #Maximum mutation rate. Precondition: Max_mut > 0
+        self.max_mut = max_mut
+        #Minimum mutation rate. Precondition: 0 < Min_mut <= Max_mut
+        self.min_mut = min_mut
         #Decrease value of the mutation rate
-        self.mutation_decrease = mutation_decrease
+        self.mut_decrease = mut_decrease
