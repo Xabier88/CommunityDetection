@@ -1,5 +1,5 @@
 #First, set working directory to current directory.
-setwd("/Users/ACER/Desktop/repository/bayesian_analysis")
+setwd(".")
 
 #Remove previous variables.
 rm(list = ls())
