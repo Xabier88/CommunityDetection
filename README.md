@@ -180,7 +180,7 @@ Best configuration is <ins>**marked**</ins>.
   
 - <b>Conditions</b>:
 
-  - <b>Maximum number of evaluations</b>: 2000 and 20.000.
+  - <b>Maximum number of evaluations</b>: 2.000 and 20.000.
 
   - <b>Number of communities</b>: From 2 to 100.
   
